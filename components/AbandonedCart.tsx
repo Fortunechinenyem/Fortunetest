@@ -1,4 +1,5 @@
 import React from "react";
+import { LuShoppingCart } from "react-icons/lu";
 
 const AbandonedCart: React.FC<{
   title: string;
@@ -6,16 +7,21 @@ const AbandonedCart: React.FC<{
   abandonedCustomers: number;
 }> = ({ title, abandonedCarts, abandonedCustomers }) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-md">
-      <h3 className="text-xl font-semibold">{title}</h3>
-      <div className="grid grid-cols-2 gap-4 mt-4">
-        <div className="bg-gray-100 rounded-lg p-4 shadow-md">
-          <p className="text-2xl font-bold text-center">{abandonedCarts}</p>
-          <p className="text-gray-600 text-center">Abandoned Carts</p>
+    <div>
+      <div className="bg-white rounded-lg p-4 shadow-md grid grid-cols-2 gap-4">
+        <div className="text-center">
+          <LuShoppingCart />
         </div>
-        <div className="bg-gray-100 rounded-lg p-4 shadow-md">
-          <p className="text-2xl font-bold text-center">{abandonedCustomers}</p>
-          <p className="text-gray-600 text-center">Abandoned Customers</p>
+        <div className="text-gray-300 text-center">This week v</div>
+        <div className="">
+          <p className="text-red-400 "> Abandoned Cart</p>
+          <p className="mt-2 text-gray-600 ">
+            20%<span className="text-[#1DC198] text-xs">+0.00%</span>
+          </p>
+        </div>
+        <div className="">
+          <p className="text-gray-400 text-center"> Customers</p>
+          <p className="mt-2 text-gray-600 text-center">30</p>
         </div>
       </div>
     </div>

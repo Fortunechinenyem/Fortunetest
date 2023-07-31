@@ -1,75 +1,129 @@
 import React from "react";
-import { Chart, registerables } from "chart.js"; // Import Chart and registerables
+import { Chart, registerables } from "chart.js";
 
-// Import custom components
+import Image1 from "../public/assessmentimage1.PNG";
+import Image2 from "../public/assessmentimage2.PNG";
+
 import AdminDashboardLayout from "@/layout/AdminDashboardLayout";
 import Customers from "@/components/Customers";
 import Orders from "@/components/Orders";
-import Marketing from "@/components/Marketing";
+
 import AllProducts from "@/components/AllProducts";
 import RecentOrders from "@/components/RecentOrders";
 import AbandonedCart from "@/components/AbandonedCart";
 import Summary from "@/components/Summary";
 import SalesVolume from "@/components/SalesVolume";
+import Marketing from "@/components/Marketing";
 
-// Register chart options
 Chart.register(...registerables);
 
 const AdminDashboardPage: React.FC = () => {
-  const allOrders = 100;
-  const pendingOrders = 30;
-  const completedOrders = 70;
-
+  const summaryData = [
+    { date: "Sept 10", sales: 90 },
+    { date: "Sept 11", sales: 40 },
+    { date: "Sept 12", sales: 65 },
+    { date: "Sept 13", sales: 30 },
+    { date: "Sept 14", sales: 80 },
+    { date: "Sept 15", sales: 40 },
+    { date: "Sept 16", sales: 80 },
+  ];
   const orders = [
     {
-      image: "url-to-image-1",
-      name: "Product 1",
-      amount: 100,
-      date: "2023-07-30",
+      image: Image1,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
       status: "Pending",
     },
     {
-      image: "url-to-image-2",
-      name: "Product 2",
-      amount: 150,
-      date: "2023-07-29",
+      image: Image2,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
       status: "Completed",
     },
-    // Add more order data as needed
+    {
+      image: Image1,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
+      status: "Pending",
+    },
+    {
+      image: Image2,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
+      status: "Completed",
+    },
+    {
+      image: Image2,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
+      status: "Completed",
+    },
+    {
+      image: Image2,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
+      status: "Completed",
+    },
+    {
+      image: Image1,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
+      status: "Pending",
+    },
+    {
+      image: Image1,
+      name: "iPhone 13",
+      amount: "730,000.00",
+      date: "12 Sept 2022",
+      status: "Pending",
+    },
   ];
 
   return (
     <AdminDashboardLayout className="bg-[#EFEDFF]">
-      <div className="m-4 mb-7 mt-5  bg-[#EFEDFF]">
-        <div className="m-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="m-4">
+      <div className="m-2 mb-7 mt-5  bg-[#EFEDFF]">
+        <div className="m-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="m-2">
             <SalesVolume />
           </div>
-          <div className="m-4">
+          <div className="m-2">
             <Customers />
           </div>
-          <div className="m-4">
-            <Orders
-              allOrders={allOrders}
-              pendingOrders={pendingOrders}
-              completedOrders={completedOrders}
+          <div className="m-2">
+            <Orders />
+          </div>
+          <div className="m-2 ">
+            <Marketing
+              title="Marketing Analytics"
+              purchase={15}
+              acquisition={55}
+              retention={35}
             />
           </div>
-          <div className="m-4">
-            <Marketing />
-          </div>
-          <div className="m-4">
+          <div className="m-2">
             <AllProducts />
+            <div className="mt-4">
+              <AbandonedCart />
+            </div>
           </div>
-          <div className="m-4">
-            <RecentOrders orders={orders} />
+          <div className="p-2 m-4 bg-white">
+            <div>
+              <p className="mt-2 text-gray-600 font-semibold mb-4 ">
+                Recent Orders
+              </p>
+              <RecentOrders orders={orders} />
+            </div>
           </div>
-          <div className="m-4">
-            <AbandonedCart />
-          </div>
-          <div className="m-4">
-            <Summary />
-          </div>
+        </div>
+        <div className="m-4 mt-7">
+          <Summary data={summaryData} />
         </div>
       </div>
     </AdminDashboardLayout>

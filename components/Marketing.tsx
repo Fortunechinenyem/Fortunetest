@@ -12,8 +12,8 @@ const Marketing: React.FC<{
     datasets: [
       {
         data: [acquisition, purchase, retention],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        backgroundColor: ["#5570F1", "#C4CAE8", "#FFCC91"],
+        hoverBackgroundColor: ["#5570F1", "#C4CAE8", "#FFCC91"],
       },
     ],
   };
@@ -21,11 +21,40 @@ const Marketing: React.FC<{
   const options = {
     maintainAspectRatio: false,
     responsive: true,
+    cutout: "60%",
+    plugins: {
+      legend: {
+        labels: {
+          generateLabels: function (chart) {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              return data.labels.map((label, i) => ({
+                text: label,
+                fillStyle: data.datasets[0].backgroundColor[i],
+                strokeStyle: "#fff",
+                lineWidth: 9,
+                hidden:
+                  isNaN(data.datasets[0].data[i]) ||
+                  chart.getDatasetMeta(0).data[i].hidden,
+
+                borderRadius: 20,
+              }));
+            }
+            return [];
+          },
+        },
+      },
+    },
   };
 
   return (
     <div className="bg-white rounded-lg p-4 shadow-md">
-      <h3 className="text-xl font-semibold">{title}</h3>
+      <div className="grid grid-cols-2 gap-4">
+        {" "}
+        <div className="text-gray-600">Marketing</div>
+        <div className="text-gray-300 text-center">This week v</div>
+      </div>
+
       <div className="mt-4">
         <Doughnut data={data} options={options} />
       </div>

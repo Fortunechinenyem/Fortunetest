@@ -1,4 +1,5 @@
 import React from "react";
+import { BsHandbag } from "react-icons/bs";
 
 const Orders: React.FC<{
   allOrders: number;
@@ -6,13 +7,28 @@ const Orders: React.FC<{
   completedOrders: number;
 }> = ({ allOrders, pendingOrders, completedOrders }) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-md">
-      <h3 className="text-xl font-semibold">All Orders</h3>
-      <p className="text-2xl mt-2">{allOrders}</p>
-      <h3 className="text-xl font-semibold mt-4">Pending Orders</h3>
-      <p className="text-2xl mt-2">{pendingOrders}</p>
-      <h3 className="text-xl font-semibold mt-4">Completed Orders</h3>
-      <p className="text-2xl mt-2">{completedOrders}</p>
+    <div>
+      <div className="bg-white rounded-lg p-4 shadow-md grid grid-cols-2 gap-4">
+        <div className="text-center">
+          <BsHandbag />
+        </div>
+        <div className="text-gray-300 text-center">This week v</div>
+      </div>
+      <div className="bg-white rounded-lg p-4 shadow-md grid grid-cols-3 gap-4">
+        {" "}
+        <div className="">
+          <p className="text-gray-400 "> All Orders</p>
+          <p className="mt-2 text-gray-600 ">450</p>
+        </div>
+        <div className="">
+          <p className="text-gray-400 text-center"> Pending</p>
+          <p className="mt-2 text-gray-600 text-center">5</p>
+        </div>
+        <div className="">
+          <p className="text-gray-400 text-center"> Completed</p>
+          <p className="mt-2 text-gray-600 text-center">445</p>
+        </div>
+      </div>
     </div>
   );
 };
